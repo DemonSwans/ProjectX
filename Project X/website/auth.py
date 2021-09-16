@@ -7,6 +7,7 @@ from flask_login import login_user,login_required,logout_user,current_user
 import datetime
 from datetime import date
 from dateutil.relativedelta import relativedelta
+from . import create_users_directory
 
 auth = Blueprint('auth',__name__)
 
@@ -64,6 +65,7 @@ def register():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
+            create_users_directory(current_user)
             return redirect(url_for('views.home'))
 
     if current_user.is_authenticated:

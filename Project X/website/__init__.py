@@ -4,6 +4,7 @@ from os import path
 from flask_login import LoginManager
 from flask_session import Session
 from flask_socketio import SocketIO
+import os
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -41,3 +42,15 @@ def create_database(app):
     if not path.exists('website/' + DB_NAME):
         db.create_all(app=app)
         print("Created database")
+
+def create_users_directory(User):
+    path = os.getcwd()
+    os.chdir(fr'{path}\website\Users_data')
+    os.mkdir(f'{User.id}#{User.login}')
+    os.chdir(fr'{User.id}#{User.login}')
+    os.mkdir('user_photos')
+    os.mkdir('user_video')
+    os.chdir(path)
+
+
+
