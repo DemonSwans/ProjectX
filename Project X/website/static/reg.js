@@ -1,73 +1,6 @@
 let sel = document.querySelectorAll(".haslo");
 let hint = document.querySelector(".hint");
 
-sel.forEach(haslo => {
-    haslo.addEventListener("focusin", ()=>{
-        hint.classList.toggle("shown");
-    });
-    haslo.addEventListener("focusout", ()=>{
-        hint.classList.toggle("shown");
-    });
-});
-
-let dzien = document.querySelector(".dzien");
-
-function createOptions(objekt, liczba){
-    for(var i = 1; i <= liczba; i++){
-        var opt = document.createElement("option");
-        opt.value = i;
-        opt.innerHTML = i;
-        objekt.appendChild(opt);
-    }
-}
-
-createOptions(dzien, 31);
-
-let rok = document.querySelector(".rok");
-
-for(var i = 2021; i >= 1950 ; i--){
-    var opt = document.createElement("option");
-    opt.value = i;
-    opt.innerHTML = i;
-    rok.appendChild(opt);
-}
-
-let miesiac = document.querySelector(".miesiac");
-console.log(miesiac.length);
-
-let selectValue;
-
-miesiac.addEventListener("change", ()=>{
-    selectValue = miesiac.options[miesiac.selectedIndex].value;
-    if(selectValue == "01" || selectValue == "03" || selectValue == "05" || selectValue == "07" || selectValue == "08" || selectValue == "10" || selectValue == "12"){
-        while(dzien.firstChild){
-            dzien.removeChild(dzien.firstChild);
-        }
-        createOptions(dzien, 31);
-    }else if(selectValue == "02"){
-        while(dzien.firstChild){
-            dzien.removeChild(dzien.firstChild);
-        }
-        createOptions(dzien, 29);
-    }else{
-        while(dzien.firstChild){
-            dzien.removeChild(dzien.firstChild);
-        }
-        createOptions(dzien, 30);
-    }
-});
-
-let error = document.querySelector(".error");
-
-if(typeof(error) != undefined && error != null){
-    setTimeout(()=>{
-        error.style.transform = "translateY(-300px)";
-    }, 5000);
-}
-
-
-/*Animacja tła */
-
 const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -142,3 +75,72 @@ function animate(){
     }
 }
 animate();
+
+
+sel.forEach(haslo => {
+    haslo.addEventListener("focusin", ()=>{
+        hint.classList.toggle("shown");
+    });
+    haslo.addEventListener("focusout", ()=>{
+        hint.classList.toggle("shown");
+    });
+});
+
+let dzien = document.querySelector(".dzien");
+
+function createOptions(objekt, liczba){
+    for(var i = 1; i <= liczba; i++){
+        var opt = document.createElement("option");
+        opt.value = i;
+        opt.innerHTML = i;
+        objekt.appendChild(opt);
+    }
+}
+
+createOptions(dzien, 31);
+
+let rok = document.querySelector(".rok");
+
+for(var i = 2021; i >= 1950 ; i--){
+    var opt = document.createElement("option");
+    opt.value = i;
+    opt.innerHTML = i;
+    rok.appendChild(opt);
+}
+
+let miesiac = document.querySelector(".miesiac");
+console.log(miesiac.length);
+
+let selectValue;
+
+miesiac.addEventListener("change", ()=>{
+    selectValue = miesiac.options[miesiac.selectedIndex].value;
+    if(selectValue == "01" || selectValue == "03" || selectValue == "05" || selectValue == "07" || selectValue == "08" || selectValue == "10" || selectValue == "12"){
+        while(dzien.firstChild){
+            dzien.removeChild(dzien.firstChild);
+        }
+        createOptions(dzien, 31);
+    }else if(selectValue == "02"){
+        while(dzien.firstChild){
+            dzien.removeChild(dzien.firstChild);
+        }
+        createOptions(dzien, 29);
+    }else{
+        while(dzien.firstChild){
+            dzien.removeChild(dzien.firstChild);
+        }
+        createOptions(dzien, 30);
+    }
+});
+
+let error = document.querySelector(".error");
+
+if(typeof(error) != undefined && error != null){
+    setTimeout(()=>{
+        error.style.transform = "translateY(-300px)";
+    }, 5000);
+}
+
+
+/*Animacja tła */
+
