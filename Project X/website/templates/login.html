@@ -19,7 +19,7 @@
             </form>
             <div class="inner">
                 <a href="{{ url_for('auth.register')}}" class="hiperlink">Nie masz konta?</a>
-                <a href="" class="hiperlink">Zapomniałeś hasła?</a>
+                <a href="{{ url_for('auth.login')}}" class="hiperlink">Zapomniałeś hasła?</a>
             </div> 
         </div>
         <script src="{{ url_for('static', filename='reg.js')}}"></script>
