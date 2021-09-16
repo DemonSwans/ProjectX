@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Rejestracja</title>
+</head>
+<body>
+<canvas></canvas>
+{% with messages = get_flashed_messages(with_categories=true)%}
+            {% if messages%}
+                {%for category, message in messages%}
+                    {%if category == 'error'%}
+                    <div class="error">
+                        {{message}}
+                    </div>
+                    {%endif%}
+                {%endfor%}
+            {%endif%}
+            {%endwith%}
+<div class="border">
+    <div class="reg">
+        <div class="napis">Rejestracja</div>
+        <form method="post">
+            <input type="text" placeholder="Login" name="login">
+            <input type="text" placeholder="E-mail"name="email">
+            <input type="password" placeholder="Hasło" class="haslo" name="haslo">
+            <input type="password" placeholder="Potwierdź hasło" class="haslo" name="haslo_powt">
+            <div class="birth-con">
+                <select name="miesiac" class="miesiac option">
+                    <option value="01">Sty</option>
+                    <option value="02">Lut</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Kwi</option>
+                    <option value="05">Maj</option>
+                    <option value="06">Cze</option>
+                    <option value="07">Lip</option>
+                    <option value="08">Sie</option>
+                    <option value="09">Wrz</option>
+                    <option value="10">Paź</option>
+                    <option value="11">Lis</option>
+                    <option value="12">Gru</option>
+                </select>
+                <select name="dzien" class="dzien option"></select>
+                <select name="rok" class="rok option"></select>
+            </div>
+            <input type="submit" value="Zarejestruj się" class="register" name="Załóż konto">
+        </form>
+    </div>
+    <div class="hint">
+        <div class="hints-con">
+            <ul> 
+                <h3>Hasło musi zawierać:</h3>
+                <li>minimum jedną wielką literę</li>
+                <li>minimum jedną cyfrę</li>
+                <li>minimum jeden znak specjalny</li>
+                <li>minimum 8 znaków</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <script src="{{ url_for('static', filename='reg.js')}}"></script>
+</body>
+</html>

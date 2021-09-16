@@ -1,0 +1,280 @@
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+*{
+    user-select: none;
+}
+@keyframes zjazd{
+    from{
+        transform: translateY(-300px);
+    }to{
+        transform: initial;
+    }
+}
+body{
+    margin: 0;
+    display: flex;
+    background: rgb(66, 66, 66);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+    transition: 0.2s;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+} 
+canvas{
+    position: absolute;
+    z-index: -1;
+    filter: blur(15px);
+} 
+.border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22%;
+    padding: 7px;
+    border-radius: 40px;
+    background-image: linear-gradient(to right, #d02ebe, #2092ef);
+    animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+    /* reg.html */
+    .reg input{
+        width: 80%;
+        outline: none;
+        border: none;
+        margin: 10px 0px 10px 0px;
+        border-radius: 50px;
+        height: 40px;
+        font-size: 20px;
+        text-align: center;
+        transition: 0.1s;
+    }
+    .reg input:focus, .birth-con select:focus{
+        background: rgb(82, 82, 82);
+    }
+    .reg input:focus > .hint{
+        transform: initial;
+    }
+    form{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+    }
+    form input{
+        background: grey;
+        width: 90%;
+    }
+    form input::placeholder{
+        color: white;
+    }
+    
+    .login-win, .reg{
+        padding: 30px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 90%;
+        background-color: rgb(53, 53, 53);
+        overflow: visible;
+        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+    }
+    .reg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .napis{
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    .register{
+        border-radius: 10px;
+        max-width: 50%;
+        background: rgb(53, 53, 53);
+        color: white;
+        cursor: pointer;
+        transition: ease .2s;
+    }
+    .register:hover{
+        background:rgb(88, 88, 88)
+    }
+    .hint{
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        right: 0;
+        border-radius: 25px 0 0 25px;
+        height: 40%;
+        width: 23%;
+        background-color: rgba(0,0,0,0.2);
+        transform: translateX(1000px);
+        transition: 1s;
+    }
+    .hints-con{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        width: 95%;
+        border-radius: 25px 0 0 25px;
+    }
+    .hints-con ul{
+        letter-spacing: 3px;
+        white-space: nowrap;
+        border-radius: 25px;
+        font-size: 20px;
+        background: rgba(0,0,0,0.2);
+        box-shadow: 0px 0px 40px 25px rgba(0,0,0,0.2)
+    }
+    .hints-con ul li{
+        margin: 0px 0px 25px 0px;
+    }
+    .shown{
+        transform: initial;
+    }
+    .birth-con{
+        margin-top: 10px;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .birth-con select{
+        padding: 4px;
+        border-radius: 25px;
+        font-size: 15px;
+        text-align-last: center;
+        background: grey;
+        color: white;
+        outline: none;
+        transition: 0.1s;
+    }
+    .error{
+        position: absolute;
+        top: 5%;
+        width: 30%;
+        height: 10%;
+        background: rgb(53, 53, 53);
+        border-radius: 40px;
+        border: solid red 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 2px;
+        font-size: 2.5vh;
+        transition: 1s;
+        animation: zjazd 1s;
+    }
+    .option{
+        width: 30%;
+    }
+
+
+
+
+
+    /* login.html */
+
+    .login-win img{
+        margin: 20px 0px 20px 0px;
+        height: 100px;
+        overflow: visible;
+    }
+    .login-win .login{
+        width: 80%;
+        outline: none;
+        border: none;
+        margin: 20px 0px 0px 0px;
+        border-radius: 50px;
+        height: 40px;
+        font-size: 20px;
+        text-align: center;
+        overflow: visible;
+    }
+    .login-btn{
+        margin: 30px 0px 10px 0px;
+        width: 80%;
+        border-radius: 10px; 
+        background: rgb(49, 49, 49);
+        font-size: 20px;
+        outline: none;
+        border: none;
+        height: 40px;
+        color: white;
+        cursor: pointer;
+        transition: .4s;
+        overflow: visible;
+    }
+    .login-btn:hover{
+        background: rgb(75, 74, 74);
+    }
+
+    .login-win .inner{
+        width: 80%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .inner a{
+        color: white;
+        margin: 10px 0px 0px 0px;
+        text-decoration: none;
+    }
+    .login{
+        background: grey;
+        color: white;
+    }
+    .login::placeholder{
+        color: rgb(189, 189, 189);
+    }
+    .switch-con{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+        width: 80px;
+    }
+    .switch{
+        padding: 0px 3px 0px 3px;
+        height: 60%;
+        width: 80%;
+        background: black;
+        border-radius: 25px;
+        border: white solid 2px;
+    }
+    .switch-btn{
+        position: relative;
+        top: 50%;
+        left: 2px;
+        transform: translate(0, -50%);
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+        transition: .2s;
+    }
+
+
+    /*Interakcje i zmiany via JS */
+    .switched{
+        transform: translate(200%, -50%);
+        color: black;
+    }
+    .bg{
+        background: white;
+    }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Project X</title>
+</head>
+<body>
+    <div class="login-win">
+        <img src="static\x2.png" alt="">
+        <form method = "post">
+        <input type="text" name="login" placeholder="Login" class="login">
+        <input type="password" name="haslo" placeholder="Hasło" class="login">
+        <input type="submit" value="Loguj" class="login-btn">
+        </form>
+        <div class="inner">
+            <a href="{{ url_for('auth.register')}}" class="hiperlink">Nie masz konta?</a>
+            <a href="" class="hiperlink">Zapomniałeś hasła?</a>
+        </div> 
+    </div>
+    <div class="switch-con">
+        <div class="switch">
+            <div class="btn"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='app.js')}}"></script>
+</body>
+</html>
