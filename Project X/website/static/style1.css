@@ -331,6 +331,11 @@ body .border .login-win {
           animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   -webkit-box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
           box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  align-items: center;
 }
 
 body .border .login-win img {

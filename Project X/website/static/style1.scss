@@ -184,6 +184,9 @@ body{
             overflow: visible;
             animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
             box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             img{
                 margin: 20px 0px 20px 0px;
                 height: 100px;
