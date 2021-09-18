@@ -21,3 +21,10 @@ msg.attach(MIMEText(body, 'plain'))
 text = msg.as_string()
 server.sendmail("swansytest@gmail.com","swansytest@gmail.com", text)
 '''
+from cryptography.fernet import Fernet
+
+key = Fernet.generate_key()
+f = Fernet(key)
+someting = "kutas"
+someen = f.encrypt(bytes(someting, encoding="utf8"))
+print(str(f.decrypt(someen), encoding="utf8"))
