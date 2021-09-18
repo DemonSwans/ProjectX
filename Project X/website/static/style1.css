@@ -178,6 +178,16 @@ body .border .reg form input {
   background: grey;
   color: white;
   width: 90%;
+  width: 80%;
+  outline: none;
+  border: none;
+  margin: 10px 0px 10px 0px;
+  border-radius: 50px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
 }
 
 body .border .reg form input::-webkit-input-placeholder {
@@ -240,7 +250,7 @@ body .border .reg .inner-section {
 body .border .reg .inner-section .register {
   border-radius: 10px;
   max-width: 50%;
-  background: #353535;
+  background: #292929;
   color: white;
   cursor: pointer;
   -webkit-transition: ease .2s;
@@ -331,11 +341,6 @@ body .border .login-win {
           animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   -webkit-box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
           box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  align-items: center;
 }
 
 body .border .login-win img {
@@ -344,7 +349,24 @@ body .border .login-win img {
   overflow: visible;
 }
 
-body .border .login-win .login {
+body .border .login-win form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .border .login-win form .login {
   width: 80%;
   outline: none;
   border: none;
@@ -358,19 +380,19 @@ body .border .login-win .login {
   color: white;
 }
 
-body .border .login-win .login::-webkit-input-placeholder {
+body .border .login-win form .login::-webkit-input-placeholder {
   color: #bdbdbd;
 }
 
-body .border .login-win .login:-ms-input-placeholder {
+body .border .login-win form .login:-ms-input-placeholder {
   color: #bdbdbd;
 }
 
-body .border .login-win .login::-ms-input-placeholder {
+body .border .login-win form .login::-ms-input-placeholder {
   color: #bdbdbd;
 }
 
-body .border .login-win .login::placeholder {
+body .border .login-win form .login::placeholder {
   color: #bdbdbd;
 }
 
