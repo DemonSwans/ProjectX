@@ -253,38 +253,6 @@ canvas{
     .login::placeholder{
         color: rgb(189, 189, 189);
     }
-    .switch-con{
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        right: 0;
-        bottom: 0;
-        height: 50px;
-        width: 80px;
-    }
-    .switch{
-        padding: 0px 3px 0px 3px;
-        height: 60%;
-        width: 80%;
-        background: black;
-        border-radius: 25px;
-        border: white solid 2px;
-    }
-    .switch-btn{
-        position: relative;
-        top: 50%;
-        left: 2px;
-        transform: translate(0, -50%);
-        cursor: pointer;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: white;
-        transition: .2s;
-    }
-
-
     /*Interakcje i zmiany via JS */
     .switched{
         transform: translate(200%, -50%);
