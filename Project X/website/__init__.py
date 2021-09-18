@@ -5,6 +5,10 @@ from flask_login import LoginManager
 from flask_session import Session
 from flask_socketio import SocketIO
 import os
+import smtplib
+import ssl
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -51,6 +55,22 @@ def create_users_directory(User):
     os.mkdir('user_photos')
     os.mkdir('user_video')
     os.chdir(path)
+
+def password_recovery(mail):
+    context = ssl.create_default_context()
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
+    server.login("swansytest", "Testpass!2")
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = "swansytest@gmail.com"
+        msg['To'] = mail
+        msg['Subject'] = "Resetowanie hasła"
+        body = "hej"
+        msg.attach(MIMEText(body, 'plain'))
+        text = msg.as_string()
+        server.sendmail("swansytest@gmail.com", mail , text)
+    except Exception:
+        pass
 
 
 

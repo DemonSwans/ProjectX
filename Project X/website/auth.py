@@ -1,13 +1,12 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import string
 from .models import User
-from . import db
+from . import db,create_users_directory,password_recovery
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user,login_required,logout_user,current_user
 import datetime
 from datetime import date
 from dateutil.relativedelta import relativedelta
-from . import create_users_directory
 
 auth = Blueprint('auth',__name__)
 
@@ -75,10 +74,22 @@ def register():
 
     return render_template("register.html")
 
+@auth.route('/forgot_password_change', methods=['GET','POST'])
+def forgot_password_change():
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    if request.method == "POST":
+        pass1 = request.form.get('pass1')
+        pass2 = request.form.get('pass2')
+        code = request.form.get('code')
+        print(pass1 + " " + pass2 + " " + code)
+    return  render_template("forgot_pass.html")
+
 @auth.route('/forgot_password', methods=['GET','POST'])
 def forgot_password():
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if request.method == "POST":
-        pass
+        mail = request.form.get('mail')
+        password_recovery(mail)
     return  render_template("forgot_pass.html")
