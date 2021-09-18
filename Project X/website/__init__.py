@@ -65,12 +65,22 @@ def password_recovery(mail):
         msg['From'] = "swansytest@gmail.com"
         msg['To'] = mail
         msg['Subject'] = "Resetowanie hasła"
-        body = "hej"
+        body = f"http://83.31.190.89/forgot_password_change/{mail}"
         msg.attach(MIMEText(body, 'plain'))
         text = msg.as_string()
         server.sendmail("swansytest@gmail.com", mail , text)
     except Exception:
         pass
+
+def password_change(passw, mail):
+    from werkzeug.security import generate_password_hash
+    from . models import User
+    print(mail)
+    user = User.query.filter_by(email= mail).first()
+    print(user.login)
+    user.password = generate_password_hash(passw, method='sha256')
+    db.session.commit()
+
 
 
 

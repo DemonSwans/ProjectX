@@ -1,3 +1,4 @@
+'''
 import os
 import numpy as np
 import smtplib
@@ -19,3 +20,4 @@ body = "hej"
 msg.attach(MIMEText(body, 'plain'))
 text = msg.as_string()
 server.sendmail("swansytest@gmail.com","swansytest@gmail.com", text)
+'''
