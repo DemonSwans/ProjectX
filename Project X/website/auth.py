@@ -74,3 +74,11 @@ def register():
 
 
     return render_template("register.html")
+
+@auth.route('/forgot_password', methods=['GET','POST'])
+def forgot_password():
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    if request.method == "POST":
+        pass
+    return  render_template("forgot_pass.html")
