@@ -90,6 +90,7 @@ def forgot_password_change(email):
             flash('Hasła nie są identyczne', category='error')
         else:
             password_change(haslo, mail)
+            return redirect(url_for('auth.login'))
     return  render_template("forgot_pass_change.html")
 
 @auth.route('/forgot_password', methods=['GET','POST'])
