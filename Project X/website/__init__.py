@@ -11,6 +11,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from cryptography.fernet import Fernet
 
+
 key = Fernet.generate_key()
 f = Fernet(key)
 db = SQLAlchemy()
@@ -52,15 +53,32 @@ def create_database(app):
 
 def create_users_directory(User):
     path = os.getcwd()
+    user_login = ""
+    for i in User.login:
+        if i != " ":
+            user_login += i
+        else:
+            user_login += "_"
     os.chdir(fr'{path}\website\Users_data')
-    os.mkdir(f'{User.id}#{User.login}')
-    os.chdir(fr'{User.id}#{User.login}')
+    os.mkdir(f'{User.id}#{user_login}')
+    os.chdir(fr'{User.id}#{user_login}')
     os.mkdir('user_photos')
     os.mkdir('user_video')
+    verification_file = open("verification_key.txt", "x")
+    verification_file.write(str(f.generate_key(), encoding="utf8"))
     os.chdir(path)
 
 def password_recovery(mail):
-    encmail = str(f.encrypt(mail.encode()), encoding="utf8")
+    from .models import User
+    path = os.getcwd()
+    print(mail)
+    user = User.query.filter_by(email=mail).first()
+    print(user)
+    user_login = user.login.replace(" ", "_")
+    print(user_login)
+    user_key = bytes(open(f"{path}\\website\\Users_data\\{user.id}#{user_login}\\verification_key.txt", "r").read(), encoding="utf8")
+    f_user = Fernet(user_key)
+    encmail = str(f_user.encrypt(mail.encode()), encoding="utf8")
     context = ssl.create_default_context()
     server = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
     server.login("swansytest", "Testpass!2")
@@ -69,23 +87,25 @@ def password_recovery(mail):
         msg['From'] = "swansytest@gmail.com"
         msg['To'] = mail
         msg['Subject'] = "Resetowanie hasła"
-        body = f"http://83.31.190.89/forgot_password_change/{encmail}"
+        body = f"http://83.31.190.89/forgot_password_change/{user.id}/{encmail}/{user_login}"
         msg.attach(MIMEText(body, 'plain'))
         text = msg.as_string()
         server.sendmail("swansytest@gmail.com", mail , text)
     except Exception:
         pass
 
-def password_change(passw, encmail):
+def password_change(passw, encmail, id, login):
     from werkzeug.security import generate_password_hash
     from . models import User
-    try:
-        mail = str(f.decrypt(encmail.encode()), encoding="utf8")
-        user = User.query.filter_by(email= mail).first()
-        user.password = generate_password_hash(passw, method='sha256')
-        db.session.commit()
-    except Exception:
-        pass
+    path = os.getcwd()
+    user_key = bytes(open(f"{path}\\website\\Users_data\\{id}#{login}\\verification_key.txt", "r").read(), encoding="utf8")
+    f_user = Fernet(user_key)
+    mail = str(f_user.decrypt(encmail.encode()), encoding="utf8")
+    print(mail)
+    user = User.query.filter_by(email= mail).first()
+    user.password = generate_password_hash(passw, method='sha256')
+    db.session.commit()
+
 
 
 

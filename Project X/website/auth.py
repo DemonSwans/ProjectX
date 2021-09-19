@@ -65,7 +65,7 @@ def register():
         elif haslo != haslo_powt:
             flash('Hasła nie są identyczne', category='error')
         else:
-            new_user = User(login=login,email=email,birth_date=birth_date,join_date=join_date,password=generate_password_hash(haslo, method='sha256'))
+            new_user = User(login=login,email=email,birth_date=birth_date,join_date=join_date,password=generate_password_hash(haslo, method='sha256'), verified=False)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=True)
@@ -79,8 +79,8 @@ def register():
 
     return render_template("register.html")
 
-@auth.route('/forgot_password_change/<email>', methods=['GET','POST'])
-def forgot_password_change(email):
+@auth.route('/forgot_password_change/<id>/<email>/<login>', methods=['GET','POST'])
+def forgot_password_change(id,email,login):
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if request.method == "POST":
@@ -100,7 +100,7 @@ def forgot_password_change(email):
         elif haslo != haslo_powt:
             flash('Hasła nie są identyczne', category='error')
         else:
-            password_change(haslo, mail)
+            password_change(haslo, mail, id, login)
             return redirect(url_for('auth.login'))
     return  render_template("forgot_pass_change.html")
 
@@ -109,6 +109,10 @@ def forgot_password():
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if request.method == "POST":
-        mail = request.form.get('mail')
+        mail = request.form.get('email')
         password_recovery(mail)
     return  render_template("forgot_pass.html")
+
+@auth.route('/verification/<email>')
+def verification(email):
+    return  render_template("verification.html")
