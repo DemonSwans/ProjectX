@@ -35,6 +35,7 @@ body{
         position: absolute;
         z-index: -1;
         filter: blur(15px);
+        
     } 
     .error{
         position: absolute;
@@ -63,6 +64,47 @@ body{
         border-radius: 40px;
         background-image: linear-gradient(to right, #d02ebe, #2092ef);
         animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        @media only screen and (min-width: 600px){
+            width: 22%;
+        }
+        .forget-win{
+            padding: 30px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 90%;
+            height: 50vh;
+            background-color: rgb(53, 53, 53);
+            overflow: visible;
+            animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            form{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                input{
+                    background: grey;
+                    color: white;
+                    width: 80%;
+                    outline: none;
+                    border: none;
+                    margin: 10px 0px 10px 0px;
+                    border-radius: 50px;
+                    height: 2em;
+                    font-size: 1em;
+                    text-align: center;
+                    transition: 0.1s;
+                    &::placeholder{
+                        color: white;
+                    }
+                }
+            }
+        }
         .reg{
             padding: 30px;
             border-radius: 40px;
@@ -78,7 +120,7 @@ body{
             justify-content: center;
             align-items: center;
             .napis{
-                font-size: 40px;
+                font-size: 2em;
                 margin-bottom: 10px;
             }
             form{
@@ -91,14 +133,13 @@ body{
                 input{
                     background: grey;
                     color: white;
-                    width: 90%;
                     width: 80%;
                     outline: none;
                     border: none;
                     margin: 10px 0px 10px 0px;
                     border-radius: 50px;
-                    height: 40px;
-                    font-size: 20px;
+                    height: 2em;
+                    font-size: 1em;
                     text-align: center;
                     transition: 0.1s;
                     &::placeholder{
@@ -114,7 +155,7 @@ body{
                 select{
                     padding: 4px;
                     border-radius: 25px;
-                    font-size: 15px;
+                    font-size: 1em;
                     text-align-last: center;
                     background: grey;
                     color: white;
@@ -143,7 +184,7 @@ body{
                 }
                 .return{
                     color: white;
-                    font-size: 15px;
+                    font-size: 1em;
                     &:visited{
                         color: white;
                     }
@@ -173,7 +214,7 @@ body{
                     letter-spacing: 3px;
                     white-space: nowrap;
                     border-radius: 25px;
-                    font-size: 20px;
+                    font-size: 1em;
                     background: rgba(0,0,0,0.2);
                     box-shadow: 0px 0px 40px 25px rgba(0,0,0,0.2);
                     li{
@@ -211,7 +252,7 @@ body{
                     margin: 20px 0px 0px 0px;
                     border-radius: 50px;
                     height: 40px;
-                    font-size: 20px;
+                    font-size: 1em;
                     text-align: center;
                     overflow: visible;
                     background: grey;
@@ -226,7 +267,7 @@ body{
                 width: 80%;
                 border-radius: 10px; 
                 background: rgb(49, 49, 49);
-                font-size: 20px;
+                font-size: 2em;
                 outline: none;
                 border: none;
                 height: 40px;
