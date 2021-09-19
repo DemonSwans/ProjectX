@@ -115,7 +115,7 @@ body .border {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 22%;
+  min-width: 22%;
   padding: 7px;
   border-radius: 40px;
   background-image: -webkit-gradient(linear, left top, right top, from(#d02ebe), to(#2092ef));
@@ -136,6 +136,9 @@ body .border .forget-win {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -143,25 +146,31 @@ body .border .forget-win {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
   width: 90%;
-  height: 50vh;
+  height: 30vh;
+  text-align-last: nowrap;
   background-color: #353535;
   overflow: visible;
   -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
           animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   -webkit-box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
           box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  align-items: center;
+}
+
+body .border .forget-win .tekst {
+  width: 100%;
+  letter-spacing: 3px;
+  text-align: center;
+  font-size: 2vh;
 }
 
 body .border .forget-win form {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 4vh;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -177,16 +186,17 @@ body .border .forget-win form {
 body .border .forget-win form input {
   background: grey;
   color: white;
-  width: 80%;
+  width: 90%;
   outline: none;
   border: none;
   margin: 10px 0px 10px 0px;
   border-radius: 50px;
-  height: 2em;
+  height: 3em;
   font-size: 1em;
   text-align: center;
   -webkit-transition: 0.1s;
   transition: 0.1s;
+  cursor: pointer;
 }
 
 body .border .forget-win form input::-webkit-input-placeholder {
@@ -203,6 +213,29 @@ body .border .forget-win form input::-ms-input-placeholder {
 
 body .border .forget-win form input::placeholder {
   color: white;
+}
+
+body .border .forget-win form .wyslij {
+  width: 40%;
+  height: 35%;
+  background-color: #2b2b2b;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+body .border .forget-win form .wyslij:hover {
+  background-color: #474747;
+}
+
+body .border .forget-win a {
+  color: white;
+  position: absolute;
+  bottom: 7%;
+  margin: 0;
+  border-radius: 25px;
+  height: 3em;
+  text-align: center;
+  line-height: 3em;
 }
 
 body .border .reg {
