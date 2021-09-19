@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-{% with messages = get_flashed_messages(with_categories=true)%}
+<!--{% with messages = get_flashed_messages(with_categories=true)%}
             {% if messages%}
                 {%for category, message in messages%}
                     {%if category == 'error'%}
@@ -15,15 +16,17 @@
                     {%endif%}
                 {%endfor%}
             {%endif%}
-            {%endwith%}
-<form method="post">
-Hasło:
-<input type="password" name="pass1">
-<br>
-Powtórz hasło:
-<input type="password" name="pass2">
-<br>
-<input type="submit" value="Zmień Hasło">
-</form>
+            {%endwith%}-->
+    <canvas></canvas>
+    <div class="border">
+        <div class="forget--win">
+            <form action="method">
+                <input type="password" name="pass1" placeholder="Wprowadź nowe hasło" id="">
+                <input type="password" name="pass2" placeholder="Potwierdź nowe hasło"id="">
+                <input type="submit" value="Zmień hasło">
+            </form>
+        </div>
+    </div>
+    <script src="reg.js"></script>
 </body>
 </html>
