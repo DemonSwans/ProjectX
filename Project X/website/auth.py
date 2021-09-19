@@ -17,10 +17,9 @@ def login():
         login = request.form.get('login')
         haslo = request.form.get('haslo')
         user = User.query.filter_by(login=login).first()
-        if user:
-            if check_password_hash(user.password, haslo):
-                login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+        if user and check_password_hash(user.password, haslo):
+            login_user(user, remember=True)
+            return redirect(url_for('views.home'))
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
 
@@ -55,7 +54,13 @@ def register():
             flash('Zbyt odległa data urodzenia', category='error')
         elif len(email) < 5:
             flash('To nie email', category='error')
-        elif len(haslo) < 7 or not (haslo.islower() == False and haslo.isupper() == False) or not any(tfhaslo) or not (any(map(str.isdigit, haslo))):
+        elif (
+            len(haslo) < 7
+            or haslo.islower() != False
+            or haslo.isupper() != False
+            or not any(tfhaslo)
+            or not (any(map(str.isdigit, haslo)))
+        ):
             flash('Hasło nie spełnia wymagań', category='error')
         elif haslo != haslo_powt:
             flash('Hasła nie są identyczne', category='error')
@@ -84,7 +89,13 @@ def forgot_password_change(email):
         mail = email
         special_characters = string.punctuation
         tfhaslo = list(map(lambda char: char in special_characters, haslo))
-        if len(haslo) < 7 or not (haslo.islower() == False and haslo.isupper() == False) or not any(tfhaslo) or not (any(map(str.isdigit, haslo))):
+        if (
+            len(haslo) < 7
+            or haslo.islower() != False
+            or haslo.isupper() != False
+            or not any(tfhaslo)
+            or not (any(map(str.isdigit, haslo)))
+        ):
             flash('Hasło nie spełnia wymagań', category='error')
         elif haslo != haslo_powt:
             flash('Hasła nie są identyczne', category='error')
