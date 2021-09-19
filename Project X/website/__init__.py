@@ -53,12 +53,7 @@ def create_database(app):
 
 def create_users_directory(User):
     path = os.getcwd()
-    user_login = ""
-    for i in User.login:
-        if i != " ":
-            user_login += i
-        else:
-            user_login += "_"
+    user_login = User.login.replace(" ", "_")
     os.chdir(fr'{path}\website\Users_data')
     os.mkdir(f'{User.id}#{user_login}')
     os.chdir(fr'{User.id}#{user_login}')
@@ -71,11 +66,8 @@ def create_users_directory(User):
 def password_recovery(mail):
     from .models import User
     path = os.getcwd()
-    print(mail)
     user = User.query.filter_by(email=mail).first()
-    print(user)
     user_login = user.login.replace(" ", "_")
-    print(user_login)
     user_key = bytes(open(f"{path}\\website\\Users_data\\{user.id}#{user_login}\\verification_key.txt", "r").read(), encoding="utf8")
     f_user = Fernet(user_key)
     encmail = str(f_user.encrypt(mail.encode()), encoding="utf8")
@@ -101,7 +93,6 @@ def password_change(passw, encmail, id, login):
     user_key = bytes(open(f"{path}\\website\\Users_data\\{id}#{login}\\verification_key.txt", "r").read(), encoding="utf8")
     f_user = Fernet(user_key)
     mail = str(f_user.decrypt(encmail.encode()), encoding="utf8")
-    print(mail)
     user = User.query.filter_by(email= mail).first()
     user.password = generate_password_hash(passw, method='sha256')
     db.session.commit()
