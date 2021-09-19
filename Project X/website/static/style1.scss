@@ -95,7 +95,6 @@ body{
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                
                 input{
                     background: grey;
                     color: white;
@@ -111,9 +110,7 @@ body{
                     cursor: pointer;
                     &::placeholder{
                         color: white;
-                    }
-                   
-                    
+                    }   
                 }
                 .wyslij{
                     width: 40%;
@@ -123,8 +120,7 @@ body{
                     &:hover{
                         background-color: rgb(71, 71, 71); 
                     }
-                }
-                
+                }    
             }
             a{
                 color: rgb(255, 255, 255);
@@ -137,7 +133,55 @@ body{
                 line-height: 3em;
             }
         }
-    
+        .forget--win{
+            padding: 30px;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            width: 90%;
+            height: 30vh;
+            text-align-last: nowrap;
+            background-color: rgb(53, 53, 53);
+            overflow: visible;
+            animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+            form{
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 90%;
+                input{
+                    background: grey;
+                    color: white;
+                    width: 80%;
+                    outline: none;
+                    border: none;
+                    margin: 10px 0px 10px 0px;
+                    border-radius: 50px;
+                    height: 2em;
+                    font-size: 1em;
+                    text-align: center;
+                    transition: 0.1s;
+                    &::placeholder{
+                        color: rgb(71, 71, 71);
+                    }
+                }
+                input[type=submit]{
+                    width: 40%;
+                    border-radius: 25px;
+                    background-color: rgb(43, 43, 43); 
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgb(71, 71, 71); 
+                    }
+                }
+            }
+        }
         .reg{
             padding: 30px;
             border-radius: 40px;
