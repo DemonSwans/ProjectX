@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
 </head>
 <body>
-<!--{% with messages = get_flashed_messages(with_categories=true)%}
+{% with messages = get_flashed_messages(with_categories=true)%}
             {% if messages%}
                 {%for category, message in messages%}
                     {%if category == 'error'%}
@@ -16,7 +16,7 @@
                     {%endif%}
                 {%endfor%}
             {%endif%}
-            {%endwith%}-->
+            {%endwith%}
     <canvas></canvas>
     <div class="border">
         <div class="forget--win">
@@ -27,6 +27,6 @@
             </form>
         </div>
     </div>
-    <script src="reg.js"></script>
+    <script src="{{ url_for('static', filename='reg.js')}}"></script>
 </body>
 </html>
