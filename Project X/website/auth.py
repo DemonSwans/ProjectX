@@ -1,13 +1,12 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import string
 from .models import User
-from . import db
+from . import db,create_users_directory,password_recovery,password_change
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user,login_required,logout_user,current_user
 import datetime
 from datetime import date
 from dateutil.relativedelta import relativedelta
-from . import create_users_directory
 
 auth = Blueprint('auth',__name__)
 
@@ -18,10 +17,9 @@ def login():
         login = request.form.get('login')
         haslo = request.form.get('haslo')
         user = User.query.filter_by(login=login).first()
-        if user:
-            if check_password_hash(user.password, haslo):
-                login_user(user, remember=True)
-                return redirect(url_for('views.home'))
+        if user and check_password_hash(user.password, haslo):
+            login_user(user, remember=True)
+            return redirect(url_for('views.home'))
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
 
@@ -56,7 +54,13 @@ def register():
             flash('Zbyt odległa data urodzenia', category='error')
         elif len(email) < 5:
             flash('To nie email', category='error')
-        elif len(haslo) < 7 or not (haslo.islower() == False and haslo.isupper() == False) or not any(tfhaslo) or not (any(map(str.isdigit, haslo))):
+        elif (
+            len(haslo) < 7
+            or haslo.islower() != False
+            or haslo.isupper() != False
+            or not any(tfhaslo)
+            or not (any(map(str.isdigit, haslo)))
+        ):
             flash('Hasło nie spełnia wymagań', category='error')
         elif haslo != haslo_powt:
             flash('Hasła nie są identyczne', category='error')
@@ -75,10 +79,36 @@ def register():
 
     return render_template("register.html")
 
+@auth.route('/forgot_password_change/<email>', methods=['GET','POST'])
+def forgot_password_change(email):
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    if request.method == "POST":
+        haslo = request.form.get('pass1')
+        haslo_powt = request.form.get('pass2')
+        mail = email
+        special_characters = string.punctuation
+        tfhaslo = list(map(lambda char: char in special_characters, haslo))
+        if (
+            len(haslo) < 7
+            or haslo.islower() != False
+            or haslo.isupper() != False
+            or not any(tfhaslo)
+            or not (any(map(str.isdigit, haslo)))
+        ):
+            flash('Hasło nie spełnia wymagań', category='error')
+        elif haslo != haslo_powt:
+            flash('Hasła nie są identyczne', category='error')
+        else:
+            password_change(haslo, mail)
+            return redirect(url_for('auth.login'))
+    return  render_template("forgot_pass_change.html")
+
 @auth.route('/forgot_password', methods=['GET','POST'])
 def forgot_password():
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if request.method == "POST":
-        pass
+        mail = request.form.get('mail')
+        password_recovery(mail)
     return  render_template("forgot_pass.html")

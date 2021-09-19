@@ -5,7 +5,14 @@ from flask_login import LoginManager
 from flask_session import Session
 from flask_socketio import SocketIO
 import os
+import smtplib
+import ssl
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from cryptography.fernet import Fernet
 
+key = Fernet.generate_key()
+f = Fernet(key)
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
@@ -15,7 +22,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
-    from .views import  views
+    from .views import views
     from .auth import auth
     from .chats import chats
 
@@ -51,6 +58,35 @@ def create_users_directory(User):
     os.mkdir('user_photos')
     os.mkdir('user_video')
     os.chdir(path)
+
+def password_recovery(mail):
+    encmail = str(f.encrypt(mail.encode()), encoding="utf8")
+    context = ssl.create_default_context()
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
+    server.login("swansytest", "Testpass!2")
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = "swansytest@gmail.com"
+        msg['To'] = mail
+        msg['Subject'] = "Resetowanie hasła"
+        body = f"http://83.31.190.89/forgot_password_change/{encmail}"
+        msg.attach(MIMEText(body, 'plain'))
+        text = msg.as_string()
+        server.sendmail("swansytest@gmail.com", mail , text)
+    except Exception:
+        pass
+
+def password_change(passw, encmail):
+    from werkzeug.security import generate_password_hash
+    from . models import User
+    try:
+        mail = str(f.decrypt(encmail.encode()), encoding="utf8")
+        user = User.query.filter_by(email= mail).first()
+        user.password = generate_password_hash(passw, method='sha256')
+        db.session.commit()
+    except Exception:
+        pass
+
 
 
 
