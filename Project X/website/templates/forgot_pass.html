@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
     <title>Przypomnienie hasła</title>
 </head>
 <body>
     <canvas></canvas>
-    <div class="border">
-       
+    <div class="border"> 
         <div class="forget-win">
             <div class="tekst">
                 Podaj email na który wyślemy link do zmiany hasła.
             </div>
             <form action="">
                 <input type="email" name="email" id="" placeholder="e-mail">
-               
                 <input type="submit" value="Wyślij" class="wyslij">
             </form>
              <a href="">Powrót</a>
         </div>
     </div>
-    <script src="reg.js"></script>
+    <script src="{{ url_for('static', filename='reg.js')}}"></script>
 </body>
 </html>
