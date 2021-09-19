@@ -1,3 +1,2 @@
 # ProjectX
-#fdsafdasfsd
-#przegryw
+
