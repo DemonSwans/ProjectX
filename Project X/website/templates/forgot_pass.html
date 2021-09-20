@@ -18,7 +18,7 @@
                 <input type="email" name="email" id="" placeholder="e-mail">
                 <input type="submit" value="Wyślij" class="wyslij">
             </form>
-             <a href="">Powrót</a>
+             <a href="{{ url_for('auth.login')}}">Powrót</a>
         </div>
     </div>
     <script src="{{ url_for('static', filename='reg.js')}}"></script>
