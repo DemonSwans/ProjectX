@@ -1,7 +1,6 @@
 from website import create_app
 from flask_socketio import SocketIO, send
 from flask_login import current_user
-import string
 
 app = create_app()
 socketio = SocketIO(app)

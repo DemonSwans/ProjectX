@@ -9,3 +9,4 @@ class User(db.Model, UserMixin):
     birth_date = db.Column(db.Date())
     join_date = db.Column(db.Date())
     password = db.Column(db.String(150))
+    verified = db.Column(db.Boolean, default=False, nullable=False)
