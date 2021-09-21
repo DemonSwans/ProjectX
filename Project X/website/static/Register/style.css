@@ -25,29 +25,24 @@
 
 @-webkit-keyframes zjazd {
   from {
-    -webkit-transform: translate(-300px, -50%);
-            transform: translate(-300px, -50%);
+    -webkit-transform: translateY(-300px);
+            transform: translateY(-300px);
   }
   to {
-    -webkit-transform: translate(0, -50%);
-            transform: translate(0, -50%);
+    -webkit-transform: initial;
+            transform: initial;
   }
 }
 
 @keyframes zjazd {
   from {
-    -webkit-transform: translate(-300px, -50%);
-            transform: translate(-300px, -50%);
+    -webkit-transform: translateY(-300px);
+            transform: translateY(-300px);
   }
   to {
-    -webkit-transform: translate(0, -50%);
-            transform: translate(0, -50%);
+    -webkit-transform: initial;
+            transform: initial;
   }
-}
-
-.shown {
-  -webkit-transform: initial;
-          transform: initial;
 }
 
 canvas {
@@ -70,6 +65,31 @@ body {
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
+  color: white;
+}
+
+body .error {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 5vh;
+  background: #353535;
+  padding: 10px;
+  top: 0;
+  border: 2px red solid;
+  font-family: Montserrat;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-animation: zjazd 1s;
+          animation: zjazd 1s;
+  z-index: 99;
 }
 
 body .border {
@@ -83,7 +103,7 @@ body .border {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-width: 22%;
+  min-width: 25%;
   padding: 5px;
   border-radius: 10px;
   background-image: -webkit-gradient(linear, left top, right top, from(#d02ebe), to(#2092ef));
@@ -99,39 +119,8 @@ body .border .reg-container {
   background: #353535;
   border-radius: 10px;
   padding: 20px;
-}
-
-body .border .reg-container .hint-con {
-  position: absolute;
-  height: 60%;
-  width: 90%;
-  background: #353535;
-  right: 10px;
-  top: 20%;
-  z-index: -1;
-  border-radius: 0px 25px 25px 0px;
-  -webkit-clip-path: inset(0px 0px 0px 0px);
-          clip-path: inset(0px 0px 0px 0px);
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-
-body .border .reg-container .hint-con h3 {
-  font-family: Montserrat;
-  text-align: center;
-  color: white;
-}
-
-body .border .reg-container .hint-con ul {
-  font-family: Montserrat;
-  list-style: none;
-  color: white;
-  font-size: 1.5em;
-  letter-spacing: 1px;
-}
-
-body .border .reg-container .hint-con ul li {
-  margin: 10px 0px 10px 0px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
 body .border .reg-container h1 {
@@ -196,6 +185,42 @@ body .border .reg-container form input[type=text]::placeholder, body .border .re
   text-align: center;
 }
 
+body .border .reg-container form .hint-con {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: Montserrat;
+  background-color: #242424;
+  padding: 10px;
+  overflow: hidden;
+  -webkit-transition: .3s;
+  transition: .3s;
+  margin-top: 10px;
+  width: calc(100% - 110px);
+  border-radius: 10px;
+}
+
+body .border .reg-container form .hint-con h3 {
+  display: block;
+  margin: 0;
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+body .border .reg-container form .hint-con .hints {
+  font-size: 15px;
+}
+
 body .border .reg-container form .birth {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -226,7 +251,7 @@ body .border .reg-container form input[type=submit] {
   border: none;
   outline: none;
   font-size: 15px;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 5px;
   cursor: pointer;
   width: 35%;
@@ -237,5 +262,25 @@ body .border .reg-container form input[type=submit] {
 
 body .border .reg-container form input[type=submit]:hover {
   background: #5a5a5a;
+}
+
+body .border .reg-container a {
+  display: block;
+  color: white;
+  font-family: Montserrat;
+  text-align: center;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+body .border .reg-container a:visited {
+  color: white;
+}
+
+@media screen and (max-width: 700px) {
+  body .reg-container .hint-con {
+    background: red;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -19,25 +19,14 @@
                     {%endif%}
                 {%endfor%}
             {%endif%}
-            {%endwith%}            
+            {%endwith%}
 <div class="border">
     <div class="reg-container">
-        <div class="hint-con">
-            <div class="hint">
-                <h3>Password must contain: </h3>
-                <ul>
-                    <li>At least 8 characters</li>
-                    <li>At least 1 capital letter</li>
-                    <li>At lest 1 special character</li>
-                    <li>At least 1 digit</li>
-                </ul>
-            </div>
-        </div>
         <h1>Sign up</h1>
         <form method="post">
             <input type="text" name="login" id="" placeholder="Login" autocomplete="off" class="login">
             <input type="email" name="email" id="" placeholder="E-mail" autocomplete="off">
-            <input type="password" name="haslo" id="" placeholder="Password"  class="haslo">
+            <input type="password" name="haslo" id="" placeholder="Password"  class="haslo"> 
             <input type="password" name="haslo_powt" id="" placeholder="Confirm password" class="haslo">
             <div class="birth">
                 <select name="miesiac" id="" class="miesiac">
@@ -57,9 +46,18 @@
                 <select name="dzien" id="" class="dzien"></select>
                 <select name="rok" id="" class="rok"></select>
             </div>
-            <input type="submit" value="Sign up">
-           
+            <div class="hint-con shown">
+                <h3>Password must:</h3>
+                <div class="hints">
+                    <div class="hint"> - be at least 8 characters long</div>
+                    <div class="hint"> - have at least 1 digit</div>
+                    <div class="hint"> - have at least 1 special character</div>
+                    <div class="hint"> - have at least 1 capital letter</div>
+                </div>
+            </div>
+            <input type="submit" value="Sign up">    
         </form>
+        <a href="{{ url_for('auth.login')}}">Back</a>
     </div>
 </div>
 <script src="{{ url_for('static', filename='reg.js')}}"></script>

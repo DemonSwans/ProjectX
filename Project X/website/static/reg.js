@@ -52,14 +52,14 @@ function init(){
     for(let j = 0; j < 9; j++){
         for(let i = 0; i < 40; i++){
             let randColor = Math.floor(Math.random()*koloryPink.length);
-            let rect = new Rect(i*canvas.width/20, Math.floor(Math.random()*19)*canvas.height/10, canvas.width/20, canvas.height/10, koloryPink[randColor], 0.5);
+            let rect = new Rect(i*100, Math.floor(Math.random()*19)*100, 100, 100, koloryPink[randColor], 0.5);
             layer.push(rect);
         }
     }
     for(let j = 1; j < 9; j++){
         for(let i = 0; i < 40; i++){
             let randColor = Math.floor(Math.random()*koloryBlue.length);
-            let rect = new Rect(i*canvas.width/20, Math.floor(Math.random()*19)*canvas.height/10, canvas.width/20, canvas.height/10, koloryBlue[randColor], -0.5);
+            let rect = new Rect(i*100, Math.floor(Math.random()*19)*100, 100, 100, koloryBlue[randColor], -0.5);
             layer.push(rect);
         }
     }
@@ -81,14 +81,13 @@ window.addEventListener("resize", ()=>{
 });
 
 let hintCon = document.querySelector(".hint-con");
-let hint = document.querySelector(".hint");
 
 sel.forEach(haslo => {
     haslo.addEventListener("focusin", ()=>{
-        hintCon.style.right = "-80%";
+        hintCon.classList.toggle("shown");
     });
     haslo.addEventListener("focusout", ()=>{
-        hintCon.style.right = "10px"; 
+         hintCon.classList.toggle("shown");
     });
 });
 
