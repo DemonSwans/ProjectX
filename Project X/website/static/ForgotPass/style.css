@@ -92,8 +92,6 @@ body .border .forget-win {
   overflow: visible;
   -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
           animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  -webkit-box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
-          box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
 }
 
 body .border .forget-win .tekst {
@@ -119,6 +117,7 @@ body .border .forget-win form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 body .border .forget-win form input {

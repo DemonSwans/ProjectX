@@ -1,5 +1,4 @@
 let sel = document.querySelectorAll(".haslo");
-let hint = document.querySelector(".hint");
 
 const canvas = document.querySelector("canvas");
 canvas.width = window.innerWidth;
@@ -53,14 +52,14 @@ function init(){
     for(let j = 0; j < 9; j++){
         for(let i = 0; i < 40; i++){
             let randColor = Math.floor(Math.random()*koloryPink.length);
-            let rect = new Rect(i*100, Math.floor(Math.random()*19)*100, 100, 100, koloryPink[randColor], 0.5);
+            let rect = new Rect(i*canvas.width/20, Math.floor(Math.random()*19)*canvas.height/10, canvas.width/20, canvas.height/10, koloryPink[randColor], 0.5);
             layer.push(rect);
         }
     }
     for(let j = 1; j < 9; j++){
         for(let i = 0; i < 40; i++){
             let randColor = Math.floor(Math.random()*koloryBlue.length);
-            let rect = new Rect(i*100, Math.floor(Math.random()*19)*100, 100, 100, koloryBlue[randColor], -0.5);
+            let rect = new Rect(i*canvas.width/20, Math.floor(Math.random()*19)*canvas.height/10, canvas.width/20, canvas.height/10, koloryBlue[randColor], -0.5);
             layer.push(rect);
         }
     }
@@ -76,13 +75,20 @@ function animate(){
 }
 animate();
 
+window.addEventListener("resize", ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+let hintCon = document.querySelector(".hint-con");
+let hint = document.querySelector(".hint");
 
 sel.forEach(haslo => {
     haslo.addEventListener("focusin", ()=>{
-        hint.classList.toggle("shown");
+        hintCon.style.right = "-80%";
     });
     haslo.addEventListener("focusout", ()=>{
-        hint.classList.toggle("shown");
+        hintCon.style.right = "10px"; 
     });
 });
 
@@ -109,7 +115,6 @@ for(var i = 2021; i >= 1950 ; i--){
 }
 
 let miesiac = document.querySelector(".miesiac");
-console.log(miesiac.length);
 
 let selectValue;
 

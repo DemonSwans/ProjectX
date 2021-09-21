@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static/Register', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static/Register', filename='style.css')}}">
     <title>Rejestracja</title>
 </head>
 <body>
@@ -19,52 +19,49 @@
                     {%endif%}
                 {%endfor%}
             {%endif%}
-            {%endwith%}
+            {%endwith%}            
 <div class="border">
-    <div class="reg">
-        <div class="napis">Rejestracja</div>
+    <div class="reg-container">
+        <div class="hint-con">
+            <div class="hint">
+                <h3>Password must contain: </h3>
+                <ul>
+                    <li>At least 8 characters</li>
+                    <li>At least 1 capital letter</li>
+                    <li>At lest 1 special character</li>
+                    <li>At least 1 digit</li>
+                </ul>
+            </div>
+        </div>
+        <h1>Sign up</h1>
         <form method="post">
-            <input type="text" placeholder="Login" name="login">
-            <input type="text" placeholder="E-mail"name="email">
-            <input type="password" placeholder="Hasło" class="haslo" name="haslo">
-            <input type="password" placeholder="Potwierdź hasło" class="haslo" name="haslo_powt">
-            <div class="birth-con">
-                <select name="miesiac" class="miesiac option">
-                    <option value="01">Sty</option>
-                    <option value="02">Lut</option>
+            <input type="text" name="login" id="" placeholder="Login" autocomplete="off" class="login">
+            <input type="email" name="email" id="" placeholder="E-mail" autocomplete="off">
+            <input type="password" name="haslo" id="" placeholder="Password"  class="haslo">
+            <input type="password" name="haslo_powt" id="" placeholder="Confirm password" class="haslo">
+            <div class="birth">
+                <select name="miesiac" id="" class="miesiac">
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
                     <option value="03">Mar</option>
-                    <option value="04">Kwi</option>
-                    <option value="05">Maj</option>
-                    <option value="06">Cze</option>
-                    <option value="07">Lip</option>
-                    <option value="08">Sie</option>
-                    <option value="09">Wrz</option>
-                    <option value="10">Paź</option>
-                    <option value="11">Lis</option>
-                    <option value="12">Gru</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sept</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
                 </select>
-                <select name="dzien" class="dzien option"></select>
-                <select name="rok" class="rok option"></select>
+                <select name="dzien" id="" class="dzien"></select>
+                <select name="rok" id="" class="rok"></select>
             </div>
-            <div class="inner-section">
-                <input type="submit" value="Zarejestruj się" class="register" name="Załóż konto">
-                <a href="{{ url_for('auth.login')}}" class="return">Powrót do logowania</a>
-            </div>
+            <input type="submit" value="Sign up">
+           
         </form>
     </div>
-    <div class="hint">
-        <div class="hints-con">
-            <ul> 
-                <h3>Hasło musi zawierać:</h3>
-                <li>minimum jedną wielką literę</li>
-                <li>minimum jedną cyfrę</li>
-                <li>minimum jeden znak specjalny</li>
-                <li>minimum 8 znaków</li>
-            </ul>
-        </div>
-    </div>
 </div>
-
-    <script src="{{ url_for('static', filename='reg.js')}}"></script>
+<script src="{{ url_for('static', filename='reg.js')}}"></script>
 </body>
 </html>
