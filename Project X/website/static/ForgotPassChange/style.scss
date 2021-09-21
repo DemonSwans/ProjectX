@@ -1,0 +1,107 @@
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+body{
+    margin: 0;
+    display: flex;
+    background: rgb(66, 66, 66);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+    transition: 0.2s;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    canvas{
+        position: absolute;
+        z-index: -1;
+        filter: blur(15px);
+        
+    } 
+    .error{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 30%;
+        height: 10%;
+        background: rgb(53, 53, 53);
+        border-radius: 40px;
+        border: solid red 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 2px;
+        font-size: 2.5vh;
+        transition: 1s;
+        animation: zjazd 1s;
+    }
+    .border{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 22%;
+        padding: 7px;
+        border-radius: 40px;
+        background-image: linear-gradient(to right, #d02ebe, #2092ef);
+        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        @media only screen and (min-width: 600px){
+            width: 22%;
+        }
+        .forget--win{
+            padding: 30px;
+            border-radius: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            width: 90%;
+            height: 30vh;
+            text-align-last: nowrap;
+            background-color: rgb(53, 53, 53);
+            overflow: visible;
+            animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+            form{
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 90%;
+                input{
+                    background: grey;
+                    color: white;
+                    width: 80%;
+                    outline: none;
+                    border: none;
+                    margin: 10px 0px 10px 0px;
+                    border-radius: 50px;
+                    height: 2em;
+                    font-size: 1em;
+                    text-align: center;
+                    transition: 0.1s;
+                    &::placeholder{
+                        color: rgb(71, 71, 71);
+                    }
+                }
+                input[type=submit]{
+                    width: 40%;
+                    border-radius: 25px;
+                    background-color: rgb(43, 43, 43); 
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgb(71, 71, 71); 
+                    }
+                }
+            }
+        }
+    }
+    
+}

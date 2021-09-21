@@ -1,0 +1,189 @@
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+*{
+    user-select: none;
+}
+@keyframes zjazd{
+    from{
+        transform: translate(-300px, -50%);
+    }to{
+        transform: translate(0, -50%);
+    }
+}
+.shown{
+    transform: initial;
+}
+body{
+    margin: 0;
+    display: flex;
+    background: rgb(66, 66, 66);
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+    transition: 0.2s;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    canvas{
+        position: absolute;
+        z-index: -1;
+        filter: blur(15px);
+        
+    } 
+    .error{
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 30%;
+        height: 10%;
+        background: rgb(53, 53, 53);
+        border-radius: 40px;
+        border: solid red 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: 2px;
+        font-size: 2.5vh;
+        transition: 1s;
+        animation: zjazd 1s;
+    }
+    .border{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 22%;
+        padding: 7px;
+        border-radius: 40px;
+        background-image: linear-gradient(to right, #d02ebe, #2092ef);
+        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        @media only screen and (min-width: 600px){
+            width: 22%;
+        }
+        .reg{
+            padding: 30px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 90%;
+            background-color: rgb(53, 53, 53);
+            overflow: visible;
+            animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .napis{
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
+            form{
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: 90%;
+                input{
+                    background: grey;
+                    color: white;
+                    width: 80%;
+                    outline: none;
+                    border: none;
+                    margin: 10px 0px 10px 0px;
+                    border-radius: 50px;
+                    height: 2em;
+                    font-size: 1em;
+                    text-align: center;
+                    transition: 0.1s;
+                    &::placeholder{
+                        color: white;
+                    }
+                }
+            }
+            .birth-con{
+                margin-top: 10px;
+                width: 80%;
+                display: flex;
+                justify-content: space-between;
+                select{
+                    padding: 4px;
+                    border-radius: 25px;
+                    font-size: 1em;
+                    text-align-last: center;
+                    background: grey;
+                    color: white;
+                    outline: none;
+                    transition: 0.1s;
+                }
+                .option{
+                    width: 30%;
+                }
+            }
+            .inner-section{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                .register{
+                    border-radius: 10px;
+                    max-width: 50%;
+                    background: rgb(41, 41, 41);
+                    color: white;
+                    cursor: pointer;
+                    transition: ease .2s;
+                    &:hover{
+                        background:rgb(88, 88, 88)
+                    }
+                }
+                .return{
+                    color: white;
+                    font-size: 1em;
+                    &:visited{
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+    .hint{
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        right: 0;
+        border-radius: 25px 0 0 25px;
+        height: 40%;
+        width: 23%;
+        background-color: rgba(0,0,0,0.2);
+        transform: translateX(1000px);
+        transition: 1s;
+        .hints-con{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90%;
+            width: 95%;
+            border-radius: 25px 0 0 25px;
+            ul{
+                letter-spacing: 3px;
+                white-space: nowrap;
+                border-radius: 25px;
+                font-size: 1em;
+                background: rgba(0,0,0,0.2);
+                box-shadow: 0px 0px 40px 25px rgba(0,0,0,0.2);
+                li{
+                    margin: 0px 0px 25px 0px;
+                }
+            }
+        }
+    }
+}
