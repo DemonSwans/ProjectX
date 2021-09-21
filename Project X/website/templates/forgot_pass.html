@@ -4,21 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='/ForgotPass/style.css') }}">
-    <title>Przypomnienie hasła</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/ForgotPass/style.css')}}">
+    <title>Password reset</title>
 </head>
 <body>
     <canvas></canvas>
     <div class="border"> 
         <div class="forget-win">
-            <div class="tekst">
-                Podaj email na który wyślemy link do zmiany hasła.
-            </div>
+            <h3>Enter your e-mail address to which we will send a link to change the password.</h3>  
             <form method="post">
-                <input type="email" name="email" id="" placeholder="e-mail">
-                <input type="submit" value="Wyślij" class="wyslij">
+                <input type="email" name="email" id="" placeholder="E-mail">
+                <input type="submit" value="Send" class="wyslij">
             </form>
-             <a href="{{ url_for('auth.login')}}">Powrót</a>
+             <a href="{{ url_for('auth.login')}}">Back</a>
         </div>
     </div>
     <script src="{{ url_for('static', filename='reg.js')}}"></script>

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 @-webkit-keyframes fade-in {
   0% {
     opacity: 0;
@@ -6,7 +7,6 @@
     opacity: 1;
   }
 }
-
 @keyframes fade-in {
   0% {
     opacity: 0;
@@ -33,7 +33,7 @@ body {
   overflow: hidden;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: Montserrat;
 }
 
 body canvas {
@@ -53,30 +53,21 @@ body .border {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-width: 22%;
+  width: 22%;
   padding: 7px;
-  border-radius: 40px;
+  border-radius: 15px;
   background-image: -webkit-gradient(linear, left top, right top, from(#d02ebe), to(#2092ef));
   background-image: linear-gradient(to right, #d02ebe, #2092ef);
   -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
           animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-@media only screen and (min-width: 600px) {
-  body .border {
-    width: 22%;
-  }
-}
-
 body .border .forget-win {
   padding: 30px;
-  border-radius: 40px;
+  border-radius: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -84,32 +75,25 @@ body .border .forget-win {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: relative;
-  width: 90%;
-  height: 30vh;
-  text-align-last: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
   background-color: #353535;
-  overflow: visible;
   -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
           animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  -webkit-box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+          box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
 }
 
-body .border .forget-win .tekst {
-  width: 100%;
-  letter-spacing: 3px;
-  text-align: center;
-  font-size: 2vh;
+body .border .forget-win h3 {
+  margin-top: 10px 0px 0px 0px;
 }
 
 body .border .forget-win form {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 4vh;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -117,61 +101,73 @@ body .border .forget-win form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: relative;
 }
 
-body .border .forget-win form input {
-  background: grey;
-  color: white;
-  width: 90%;
+body .border .forget-win form input[type=email] {
   outline: none;
   border: none;
+  width: 100%;
   margin: 10px 0px 10px 0px;
-  border-radius: 50px;
-  height: 3em;
-  font-size: 1em;
+  font-size: 15px;
+  padding: 10px;
+  color: white;
+  background: #5a5a5a;
+  font-family: Montserrat;
   text-align: center;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  letter-spacing: 1px;
+}
+
+body .border .forget-win form input[type=email]::-webkit-input-placeholder {
+  color: #b1b1b1;
+  text-align: center;
+}
+
+body .border .forget-win form input[type=email]:-ms-input-placeholder {
+  color: #b1b1b1;
+  text-align: center;
+}
+
+body .border .forget-win form input[type=email]::-ms-input-placeholder {
+  color: #b1b1b1;
+  text-align: center;
+}
+
+body .border .forget-win form input[type=email]::placeholder {
+  color: #b1b1b1;
+  text-align: center;
+}
+
+body .border .forget-win form input[type=submit] {
+  font-family: Montserrat;
+  background: #242424;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  margin-top: 10px;
+  padding: 5px;
   cursor: pointer;
+  width: 50%;
+  -webkit-transition: .2s;
+  transition: .2s;
+  border-radius: 15px;
 }
 
-body .border .forget-win form input::-webkit-input-placeholder {
-  color: white;
-}
-
-body .border .forget-win form input:-ms-input-placeholder {
-  color: white;
-}
-
-body .border .forget-win form input::-ms-input-placeholder {
-  color: white;
-}
-
-body .border .forget-win form input::placeholder {
-  color: white;
-}
-
-body .border .forget-win form .wyslij {
-  width: 40%;
-  height: 35%;
-  background-color: #2b2b2b;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-}
-
-body .border .forget-win form .wyslij:hover {
-  background-color: #474747;
+body .border .forget-win form input[type=submit]:hover {
+  background: #5a5a5a;
 }
 
 body .border .forget-win a {
+  display: block;
   color: white;
-  position: absolute;
-  bottom: 7%;
-  margin: 0;
-  border-radius: 25px;
-  height: 3em;
+  font-family: Montserrat;
   text-align: center;
-  line-height: 3em;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+body .border .forget-win a:visited {
+  color: white;
 }
 /*# sourceMappingURL=style.css.map */

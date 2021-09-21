@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 @keyframes fade-in {
     0% {
       opacity: 0;
@@ -16,7 +17,7 @@ body{
     color: white;
     overflow: hidden;
     transition: 0.2s;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: Montserrat;
     canvas{
         position: absolute;
         z-index: -1;
@@ -27,79 +28,75 @@ body{
         display: flex;
         justify-content: center;
         align-items: center;
-        min-width: 22%;
+        width: 22%;
         padding: 7px;
-        border-radius: 40px;
+        border-radius: 15px;
         background-image: linear-gradient(to right, #d02ebe, #2092ef);
         animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-        @media only screen and (min-width: 600px){
-            width: 22%;
-        }
         .forget-win{
             padding: 30px;
-            border-radius: 40px;
+            border-radius: 15px;
             display: flex;
-            justify-content: center;
             align-items: center;
             flex-direction: column;
-            position: relative;
-            width: 90%;
-            height: 30vh;
-            text-align-last: nowrap;
+            justify-content: center;
+            width: 100%;
             background-color: rgb(53, 53, 53);
-            overflow: visible;
             animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-            
-            .tekst{
-                width: 100%;
-                letter-spacing: 3px;
-                text-align: center;
-                font-size: 2vh;
+            box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+            h3{
+                margin-top: 10px 0px 0px 0px;
             }
             form{
-                width: 100%;             
                 display: flex;
-                margin-top: 4vh;
-                justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                position: relative;
-                input{
-                    background: grey;
-                    color: white;
-                    width: 90%;
-                    outline: none;
-                    border: none;
-                    margin: 10px 0px 10px 0px;
-                    border-radius: 50px;
-                    height: 3em;
-                    font-size: 1em;
-                    text-align: center;
-                    transition: 0.1s;
-                    cursor: pointer;
-                    &::placeholder{
-                        color: white;
-                    }   
+                input[type=email]{
+                   outline: none;
+                   border: none;
+                   width: 100%;
+                   margin: 10px 0px 10px 0px;
+                   font-size: 15px;
+                   padding: 10px;
+                   color: white;
+                   background: rgb(90, 90, 90);
+                   font-family: Montserrat;
+                   text-align: center;
+                   letter-spacing: 1px;
+                   &::placeholder{
+                       color: rgb(177, 177, 177);
+                       text-align: center;
+                   }
                 }
-                .wyslij{
-                    width: 40%;
-                    height: 35%;
-                    background-color: rgb(43, 43, 43);
-                    transition: 0.2s;
+                input[type=submit]{
+                    font-family: Montserrat;
+                    background: rgb(36, 36, 36);
+                    color: white;
+                    border: none;
+                    outline: none;
+                    font-size: 15px;
+                    margin-top: 10px;
+                    padding: 5px;
+                    cursor: pointer;
+                    width: 50%;
+                    transition: .2s;
+                    border-radius: 15px;
                     &:hover{
-                        background-color: rgb(71, 71, 71); 
+                        background:rgb(90, 90, 90);
                     }
-                }    
+                }
             }
             a{
-                color: rgb(255, 255, 255);
-                position: absolute;
-                bottom: 7%;
-                margin: 0;
-                border-radius: 25px;
-                height: 3em;
+                display: block;
+                color: white;
+                font-family: Montserrat;
                 text-align: center;
-                line-height: 3em;
+                width: 100%;
+                font-size: 15px;
+                margin-top: 10px;
+                &:visited{
+                    color: white;
+                }
             }
         }
     }
