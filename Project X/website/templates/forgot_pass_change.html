@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{{ url_for('static/ForgotPassChange', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/ForgotPassChange/style.css') }}">
 </head>
 <body>
 {% with messages = get_flashed_messages(with_categories=true)%}
@@ -20,7 +20,7 @@
     <canvas></canvas>
     <div class="border">
         <div class="forget--win">
-            <form action="method">
+            <form method="post">
                 <input type="password" name="pass1" placeholder="Wprowadź nowe hasło" id="">
                 <input type="password" name="pass2" placeholder="Potwierdź nowe hasło"id="">
                 <input type="submit" value="Zmień hasło">
