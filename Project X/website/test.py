@@ -33,7 +33,7 @@ import os
 path = os.getcwd()
 verification_key = open(f"{path}\\website\\Users_data\\1#Kutas\\verification_key.txt", "r")
 print(verification_key.read())
-'''
+
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -42,3 +42,15 @@ from .models import User
 path = os.getcwd()
 user = User.query.filter_by(email=mail).first()
 user_key = bytes(open(f"{path}\\website\\Users_data\\{user.id}#{user.login}\\verification_key.txt", "r"), encoding="utf8")
+'''
+
+email = "kutas@kutas."
+check_mail = email.find("@")
+if len(email) < 5:
+    print("nope")
+elif email.find(".", check_mail) == -1:
+    print("nope")
+elif len(email)-1 == email.find(".", check_mail):
+    print("nope")
+else:
+    print("tak")

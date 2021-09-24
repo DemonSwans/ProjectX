@@ -1,12 +1,14 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import string
 from .models import User
-from . import db,create_users_directory,password_recovery,password_change
+from . import db,create_users_directory,password_recovery,password_change, verification_func, key
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user,login_required,logout_user,current_user
 import datetime
 from datetime import date
 from dateutil.relativedelta import relativedelta
+import os
+from cryptography.fernet import Fernet
 
 auth = Blueprint('auth',__name__)
 
@@ -17,7 +19,7 @@ def login():
         login = request.form.get('login')
         haslo = request.form.get('haslo')
         user = User.query.filter_by(login=login).first()
-        if user and check_password_hash(user.password, haslo):
+        if user and check_password_hash(user.password, haslo) and user.verified == True:
             login_user(user, remember=True)
             return redirect(url_for('views.home'))
     if current_user.is_authenticated:
@@ -43,16 +45,21 @@ def register():
         year = request.form.get('rok')
         ymd = f'{year}-{month}-{day}'
         birth_date = datetime.datetime.strptime(ymd, '%Y-%m-%d')
-        join_date = date.today()
+        join_date = datetime.datetime.now()
         special_characters = string.punctuation
         tfhaslo = list(map(lambda char: char in special_characters, haslo))
         user_login = User.query.filter_by(login=login).first()
         user_email = User.query.filter_by(email=email).first()
+        check_mail = email.find("@")
         if user_email or user_login:
             flash('Dany login/email jest zajęty', category='error')
         elif relativedelta(date.today(),birth_date).years >70:
             flash('Zbyt odległa data urodzenia', category='error')
         elif len(email) < 5:
+            flash('To nie email', category='error')
+        elif email.find(".", check_mail) == -1:
+            flash('To nie email', category='error')
+        elif len(email) - 1 == email.find(".", check_mail):
             flash('To nie email', category='error')
         elif (
             len(haslo) < 7
@@ -68,9 +75,8 @@ def register():
             new_user = User(login=login,email=email,birth_date=birth_date,join_date=join_date,password=generate_password_hash(haslo, method='sha256'), verified=False)
             db.session.add(new_user)
             db.session.commit()
-            login_user(new_user, remember=True)
-            create_users_directory(current_user)
-            return redirect(url_for('views.home'))
+            verification_func(email)
+            return redirect(url_for('auth.login'))
 
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
@@ -115,4 +121,13 @@ def forgot_password():
 
 @auth.route('/verification/<email>')
 def verification(email):
+    from .models import User
+    encmail = email
+    path = os.getcwd()
+    f_user = Fernet(key)
+    mail = str(f_user.decrypt(encmail.encode()), encoding="utf8")
+    user = User.query.filter_by(email=mail).first()
+    user.verified = True
+    create_users_directory(user)
+    db.session.commit()
     return  render_template("verification.html")
