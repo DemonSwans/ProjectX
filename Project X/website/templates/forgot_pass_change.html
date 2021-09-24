@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='/ForgotPassChange/style.css') }}">
+    <title>Change password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/ForgotPassChange/style.css')}}">
 </head>
 <body>
-{% with messages = get_flashed_messages(with_categories=true)%}
+<!--{% with messages = get_flashed_messages(with_categories=true)%}
             {% if messages%}
                 {%for category, message in messages%}
                     {%if category == 'error'%}
@@ -16,14 +16,15 @@
                     {%endif%}
                 {%endfor%}
             {%endif%}
-            {%endwith%}
+            {%endwith%}-->
     <canvas></canvas>
     <div class="border">
         <div class="forget--win">
             <form method="post">
-                <input type="password" name="pass1" placeholder="Wprowadź nowe hasło" id="">
-                <input type="password" name="pass2" placeholder="Potwierdź nowe hasło"id="">
-                <input type="submit" value="Zmień hasło">
+                <h2>Change password</h2>
+                <input type="password" name="pass1" placeholder="Enter new password" id="">
+                <input type="password" name="pass2" placeholder="Confirm new password"id="">
+                <input type="submit" value="Change password">
             </form>
         </div>
     </div>

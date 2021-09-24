@@ -72,6 +72,7 @@ body .error {
 }
 
 body .border {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -81,24 +82,24 @@ body .border {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-width: 22%;
-  padding: 7px;
-  border-radius: 40px;
+  min-width: 25%;
+  padding: 5px;
+  border-radius: 10px;
   background-image: -webkit-gradient(linear, left top, right top, from(#d02ebe), to(#2092ef));
   background-image: linear-gradient(to right, #d02ebe, #2092ef);
   -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
           animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-@media only screen and (min-width: 600px) {
-  body .border {
-    width: 22%;
-  }
+  -webkit-box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
+          box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
 }
 
 body .border .forget--win {
-  padding: 30px;
-  border-radius: 40px;
+  width: 100%;
+  background: #353535;
+  border-radius: 10px;
+  padding: 20px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,20 +109,6 @@ body .border .forget--win {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: relative;
-  width: 90%;
-  height: 30vh;
-  text-align-last: nowrap;
-  background-color: #353535;
-  overflow: visible;
-  -webkit-animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-          animation: fade-in 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  -webkit-box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
-          box-shadow: -40px 0px 100px 10px #d02ebe, 40px 0px 100px 20px #2092ef;
 }
 
 body .border .forget--win form {
@@ -143,44 +130,56 @@ body .border .forget--win form {
 }
 
 body .border .forget--win form input {
-  background: grey;
-  color: white;
-  width: 80%;
   outline: none;
   border: none;
+  width: 70%;
   margin: 10px 0px 10px 0px;
-  border-radius: 50px;
-  height: 2em;
-  font-size: 1em;
+  font-size: 15px;
+  padding: 10px;
+  color: white;
+  background: #5a5a5a;
+  font-family: Montserrat;
   text-align: center;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
+  letter-spacing: 1px;
 }
 
 body .border .forget--win form input::-webkit-input-placeholder {
-  color: #474747;
+  color: #b1b1b1;
+  text-align: center;
 }
 
 body .border .forget--win form input:-ms-input-placeholder {
-  color: #474747;
+  color: #b1b1b1;
+  text-align: center;
 }
 
 body .border .forget--win form input::-ms-input-placeholder {
-  color: #474747;
+  color: #b1b1b1;
+  text-align: center;
 }
 
 body .border .forget--win form input::placeholder {
-  color: #474747;
+  color: #b1b1b1;
+  text-align: center;
 }
 
 body .border .forget--win form input[type=submit] {
-  width: 40%;
-  border-radius: 25px;
-  background-color: #2b2b2b;
+  font-family: Montserrat;
+  background: #242424;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  margin-top: 10px;
+  padding: 5px;
   cursor: pointer;
+  width: 45%;
+  -webkit-transition: .2s;
+  transition: .2s;
+  border-radius: 15px;
 }
 
 body .border .forget--win form input[type=submit]:hover {
-  background-color: #474747;
+  background: #5a5a5a;
 }
 /*# sourceMappingURL=style.css.map */
