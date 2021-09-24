@@ -7,6 +7,6 @@ class User(db.Model, UserMixin):
     login = db.Column(db.String(150), unique=True)
     email = db.Column(db.String(150), unique=True)
     birth_date = db.Column(db.Date())
-    join_date = db.Column(db.Date())
+    join_date = db.Column(db.DateTime())
     password = db.Column(db.String(150))
     verified = db.Column(db.Boolean, default=False, nullable=False)

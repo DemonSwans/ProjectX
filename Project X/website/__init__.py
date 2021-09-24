@@ -11,10 +11,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from cryptography.fernet import Fernet
 
-
 key = Fernet.generate_key()
 f = Fernet(key)
 db = SQLAlchemy()
+
 DB_NAME = "database.db"
 
 def create_app():
@@ -79,7 +79,7 @@ def password_recovery(mail):
         msg['From'] = "swansytest@gmail.com"
         msg['To'] = mail
         msg['Subject'] = "Resetowanie hasła"
-        body = f"http://83.31.190.89/forgot_password_change/{user.id}/{encmail}/{user_login}"
+        body = f"http://83.31.191.236/forgot_password_change/{user.id}/{encmail}/{user_login}"
         msg.attach(MIMEText(body, 'plain'))
         text = msg.as_string()
         server.sendmail("swansytest@gmail.com", mail , text)
@@ -97,7 +97,24 @@ def password_change(passw, encmail, id, login):
     user.password = generate_password_hash(passw, method='sha256')
     db.session.commit()
 
+def verification_func(email):
+    from .models import User
+    mail = email
+    f_user = Fernet(key)
+    encmail = str(f_user.encrypt(mail.encode()), encoding="utf8")
+    context = ssl.create_default_context()
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
+    server.login("swansytest", "Testpass!2")
+    try:
+        msg = MIMEMultipart()
+        msg['From'] = "swansytest@gmail.com"
+        msg['To'] = mail
+        msg['Subject'] = "Verification"
+        body = f"http://83.31.191.236/verification/{encmail}"
+        msg.attach(MIMEText(body, 'plain'))
+        text = msg.as_string()
+        server.sendmail("swansytest@gmail.com", mail , text)
 
-
-
+    except Exception:
+        pass
 
