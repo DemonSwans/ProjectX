@@ -25,7 +25,7 @@ from cryptography.fernet import Fernet
 
 key = Fernet.generate_key()
 f = Fernet(key)
-someting = "kutas"
+someting = "dong"
 someen = f.encrypt(bytes(someting, encoding="utf8"))
 print(str(f.decrypt(someen), encoding="utf8"))
 
@@ -44,7 +44,7 @@ user = User.query.filter_by(email=mail).first()
 user_key = bytes(open(f"{path}\\website\\Users_data\\{user.id}#{user.login}\\verification_key.txt", "r"), encoding="utf8")
 '''
 
-email = "kutas@kutas."
+email = "dong@dong."
 check_mail = email.find("@")
 if len(email) < 5:
     print("nope")
